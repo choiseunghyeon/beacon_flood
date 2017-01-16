@@ -20,16 +20,16 @@ Dot11Beacon setbeacon(std::string wfname){
 
 int main() {
     PacketSender sender;
-    RadioTap rt1,rt2,rt3; // radio protocol
-    rt1.inner_pdu(setbeacon("길길짱잘생김"));
-    rt2.inner_pdu(setbeacon("choi"));
-    rt3.inner_pdu(setbeacon("hard"));
+    RadioTap rt[3]; // radio protocol
+    rt[0].inner_pdu(setbeacon("길길짱잘생김"));
+    rt[1].inner_pdu(setbeacon("choi"));
+    rt[2].inner_pdu(setbeacon("hard"));
     // rt.inner_pdu(setbeacon(d));
 
     while(1){
-    sender.send(rt1,"wlx18a6f717a1e6");
-    sender.send(rt2,"wlx18a6f717a1e6");
-    sender.send(rt3,"wlx18a6f717a1e6");
+    sender.send(rt[0],"wlx18a6f717a1e6");
+    sender.send(rt[1],"wlx18a6f717a1e6");
+    sender.send(rt[2],"wlx18a6f717a1e6");
     std::this_thread::sleep_for(std::chrono::milliseconds(100)); //beacon frame send 100ms
     }
 }
